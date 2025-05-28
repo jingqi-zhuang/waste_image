@@ -2,7 +2,7 @@
 
 Have you ever stood in front of a trash bin, unsure which one to use? With just an image of the waste, AI can now identify the correct disposal category for you.
 
-<img src="/Users/apple/Desktop/waste/images/waste.png" alt="waste" style="zoom:50%;" />
+<img src="images/waste.png" alt="waste" style="width:40%;" />
 
 The project leverages deep learning and image recognition to automate waste classification, enabling faster, more accurate, and environmentally sustainable disposal processes. Through **four structured experiments**, I developed and evaluated multiple models to identify the optimal AI-driven solution. The final models offer a robust and scalable approach to waste classification, **with a test accuracy of 97%.**
 
@@ -25,11 +25,11 @@ This project was inspired by the open-source implementations introduced in the f
 
 The dataset used is from [Kaggle](https://www.kaggle.com/datasets/sumn2u/garbage-classification-v2), containing 19,762 images categorized into 10 waste classes: metal, glass, biological, paper, battery, trash, cardboard, shoes, clothes, and plastic. Each class has 944–5,237 images, making it diverse and suitable for our experiments. 
 
-<img src="/Users/apple/Desktop/waste/images/dataset1.png" style="zoom:50%;" />
+<img src="images/dataset1.png" alt="waste" style="width:50%;" />
 
 To prepare data for the binary classification model, I perform **label engineering** by grouping the original classes into biodegradable (biological, paper, clothes, shoes, cardboard) and non-biodegradable (metal, glass, battery, trash, plastic) categories. This results in 11,806 images labeled as biodegradable and 7,956 as non-biodegradable.
 
-<img src="/Users/apple/Desktop/waste/images/dataset2.png" style="zoom:50%;" />
+<img src="images/dataset2.png" alt="waste" style="width:50%;" />
 
 To reliably fine-tune our models and evaluate their performance, out of 19,762 images, I split the dataset into training (70%), validation (15%), and test (15%) sets. 
 
@@ -44,7 +44,7 @@ Performance metrics include:
 
 To enhance model transparency, I employ heatmaps to visualize the key regions influencing model predictions, where warmer colors indicate higher importance. 
 
-![image-20250527193826714](/Users/apple/Desktop/waste/images/example-heatmap.png)
+<img src="images/example-heatmap.png" alt="waste" style="width:30%;" />
 
 ## Part 2: Methods
 
@@ -108,17 +108,17 @@ I applied transfer learning to perform binary classification of waste images int
 
 I selected MobileNetV2, a lightweight model pre-trained on ImageNet, comprising 3.5 million parameters and 154 layers. All base layers of MobileNetV2 were frozen to preserve the learned weights, allowing the model to function purely as a feature extractor. 
 
-<img src="/Users/apple/Desktop/waste/images/experimen1_model.png" style="zoom:50%;" />
+<img src="images/experiment1_model.png" alt="waste" style="width:50%;" />
 
 Despite minimal fine-tuning, the model achieved a test accuracy of 97.2%, with 98.0% accuracy on biodegradable items and 96.1% accuracy on non-biodegradable items. The confusion matrix for the test set is shown below. 
 
-<img src="/Users/apple/Desktop/waste/images/experiment1_result.png" style="zoom: 50%;" />
+<img src="images/experiment1_result.png" alt="waste" style="width:50%;" />
 
 These results suggest that MobileNetV2 was able to generalize effectively across the two major waste categories with only shallow adaptation. Grad-CAM visualizations further validate the robust performance of the binary classification model. As illustrated below, the model accurately attends to meaningful image features while ignoring irrelevant background areas. 
 
-<img src="/Users/apple/Desktop/waste/images/experiment1_pic1.png" alt="image-20250527195529641" style="zoom:50%;" />
+<img src="images/experiment1_pic1.png" alt="waste" style="width:20%;" />
 
-<img src="/Users/apple/Desktop/waste/images/experiment1_pic2.png" alt="image-20250527195538093" style="zoom:50%;" />
+<img src="images/experiment1_pic2.png" alt="waste" style="width:20%;" />
 
 ### Experiment 2: Ten-Class Classification using Transfer Learning
 
