@@ -108,7 +108,7 @@ I applied transfer learning to perform binary classification of waste images int
 
 I selected MobileNetV2, a lightweight model pre-trained on ImageNet, comprising 3.5 million parameters and 154 layers. All base layers of MobileNetV2 were frozen to preserve the learned weights, allowing the model to function purely as a feature extractor. 
 
-<img src="images/experiment1_model.png" alt="waste" style="width:50%;" />
+<img src="images/experimen1_model.png" alt="waste" style="width:50%;" />
 
 Despite minimal fine-tuning, the model achieved a test accuracy of 97.2%, with 98.0% accuracy on biodegradable items and 96.1% accuracy on non-biodegradable items. The confusion matrix for the test set is shown below. 
 
@@ -132,7 +132,7 @@ These architectures were chosen based on their performance in image recognition 
 
 For all trials in this experiment, the model architecture remained consistent. 
 
-<img src="/Users/apple/Desktop/waste/images/experiment2_model.png" style="zoom: 50%;" />
+<img src="images/experiment2_model.png" alt="waste" style="width:50%;" />
 
 The only variations across trials were the choice of base model and the specific transfer learning strategy applied. Initially, I evaluated each model with all base layers frozen. Under this configuration.
 
@@ -146,11 +146,11 @@ To further improve model performance, I conducted a fine-tuning trial by unfreez
 
 The confusion matrix indicates that the DenseNet201 model performed consistently well across all categories, with particularly strong accuracy on well-represented classes such as clothes and glass. However, some misclassification persisted between visually similar categories—most notably between plastic and metal—suggesting opportunities for further improvement through more advanced architectures and fine-tuning strategies.
 
-<img src="/Users/apple/Desktop/waste/images/experiment2_result.png" style="zoom:67%;" />
+<img src="images/experiment2_result.png" alt="waste" style="width:50%;" />
 
 The attention heatmap demonstrates that the model effectively captures the overall structure of the input images (indicated by warmer regions), but tends to overlook finer details (represented by cooler areas). These limitations motivate the use of more advanced techniques in subsequent experiments to enhance classification precision. 
 
-<img src="/Users/apple/Desktop/waste/images/experiment2_pic.png" alt="image-20250527195802485" style="zoom:50%;" />
+<img src="images/experiment2_pic.png" alt="waste" style="width:20%;" />
 
 ### Experiment 3: Ten-Class Classification using Transfer Learning with DP-CNN
 
@@ -158,15 +158,15 @@ In the third experiment, which focused on ten-class waste classification, I enha
 
 In the enhanced architecture, feature maps extracted from DenseNet201 were fed into three parallel convolutional branches with kernel sizes of 7×7, 5×5, and 3×3. These outputs were then concatenated to form a richer, multi-scale representation before the final classification layer. This design aimed to complement DenseNet’s deep hierarchical learning with parallel pathways that explicitly capture both coarse and fine-grained spatial patterns. 
 
-<img src="/Users/apple/Desktop/waste/images/experiment3_model.png" style="zoom:67%;" />
+<img src="images/experiment3_model.png" alt="waste" style="width:40%;" />
 
 However, despite its conceptual advantages, the DenseNet + DP-CNN hybrid did not outperform the baseline DenseNet model. The test accuracy plateaued at approximately **92–93%**, offering no tangible improvement over the simpler transfer learning setup. Additionally, model performance was inconsistent across different waste categories, as indicated by the confusion matrix. Some classes experienced more than 15 misclassifications, particularly among visually similar items such as *plastic*, *glass*, and *metal*. 
 
-<img src="/Users/apple/Desktop/waste/images/experiment3_result.png" style="zoom:50%;" />
+<img src="images/experiment3_result.png" alt="waste" style="width:50%;" />
 
 In addition, Grad-CAM visualizations reveal that the model often overlooks fine-grained object details while disproportionately focusing on background regions.  
 
-<img src="/Users/apple/Desktop/waste/images/experiment3_pic.png" style="zoom:50%;" />
+<img src="images/experiment3_pic.png" alt="waste" style="width:20%;" />
 
 ### Experiment 4: Ten-Class Classification using Transfer Learning with En-ELM
 
@@ -218,9 +218,9 @@ A grid search was conducted on the training and validation sets to identify the 
 
 Using the optimal hyperparameters—1,000 hidden units and an L2 penalty of 0.0001—I evaluated the model on the test set. This final evaluation achieved an overall accuracy of 97.3%, surpassing the 95% benchmark established in Experiment 2. As shown in the confusion matrix, the number of misclassifications per class was significantly reduced. Furthermore, all classes achieved precision, recall, and F1-scores above 90%, with most exceeding 97%. These results demonstrate that the model delivers robust and stable performance across all categories, establishing it as the optimal model among all four experiments.
 
-<img src="/Users/apple/Desktop/waste/images/experiment4_result1.png" style="zoom:67%;" />
+<img src="images/experiment4_result1.png" alt="waste" style="width:50%;" />
 
-<img src="/Users/apple/Desktop/waste/images/experiment4_result2.png" style="zoom:50%;" />
+<img src="images/experiment4_result2.png" alt="waste" style="width:50%;" />
 
 ### Experiment Results 
 
